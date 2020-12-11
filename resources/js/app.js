@@ -2,7 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Contacts from './../views/components/ContactList.vue';
+import Contacts from './components/ContactList.vue';
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
