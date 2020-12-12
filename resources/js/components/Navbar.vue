@@ -1,5 +1,7 @@
 <template>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
   <a class="navbar-brand" href="#">ABNATION PROGRAMMERZ</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
@@ -7,7 +9,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      
       <li class="nav-item ">
         <router-link to="/" class="nav-link">Home</router-link>
       </li>
@@ -23,16 +24,16 @@
     </ul>
 
     <ul class = "navbar-nav ml-auto">
-            <li class="nav-item dropdown">
+              <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Account
+          {{ app.user ? app.user.name : 'Account' }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <div >
+            <div v-if="!app.user">
                 <router-link to="/login" class="dropdown-item">Login</router-link> 
                  <router-link to="/register" class="dropdown-item">Register</router-link> 
             </div>
-               <a  href="javascript:;" class="dropdown-item">Logout</a>
+               <a v-else @click="logout" href="javascript:;" class="dropdown-item">Logout</a>
         </div>
       </li>
     </ul>
@@ -52,13 +53,14 @@
             }
         }, 
         methods: {
-            // logout() {
-            //     let url = this.url+'/auth/logout';
-            //     this.axios.post(url).then((response) => {
-            //       this.app.user = null;
-            //         this.$router.push("/login");
-            //       });
-            // }
+            logout() {
+ 
+                let url = this.url+'/auth/logout';
+                this.axios.post(url).then((response) => {
+                  this.app.user = null;
+                    this.$router.push("/login");
+                    });
+            }
         }
     }
 </script>

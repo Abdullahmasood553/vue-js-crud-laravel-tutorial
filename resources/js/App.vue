@@ -32,12 +32,12 @@ import Navbar from './components/Navbar';
         }, 
         methods: {
             init() {
-                this.loading = false;
-                // this.req.get('auth/init').then(response => {
-                //     this.user = response.data.user;
-                //     this.loading = false;
-                //     this.initiated = true;
-                // });
+                this.loading = true;
+                this.req.get('auth/init').then(response => {
+                    this.user = response.data.user;
+                    this.loading = false;
+                    this.initiated = true;
+                });
             }
         }
     }
