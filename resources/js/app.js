@@ -7,13 +7,6 @@ import Contacts from './components/ContactList.vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-//  Vue.component('Home', require('./../views/components/Home.vue').default)
-
-
-// const app = new Vue({
-//     el:'#app'
-// });
-
 const routes = [
     {
       name: 'contacts',
@@ -22,6 +15,8 @@ const routes = [
     }
   ];
 
+  Vue.component('spinner', require('vue-simple-spinner'));
+  
     import VueAxios from 'vue-axios';
     import axios from 'axios';
     import App from './App.vue';

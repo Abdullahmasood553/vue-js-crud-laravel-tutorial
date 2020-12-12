@@ -12,16 +12,16 @@
                     <th class="co">Action</th>
                 </tr>
             </thead>
-            <tbody v-for="contact in contacts" :key="contact.id">
+            <tbody>
                 <tr>
-                    <th scope="row">{{ contact.id }}</th>
-                    <td>{{ contact.name }}</td>
-                    <td>{{ contact.email }}</td>
-                    <td>{{ contact.designation }}</td>
-                    <td>{{ contact.contact_no }}</td>
+                    <th scope="row">123</th>
+                    <td>asdsad</td>
+                    <td>asdasdsad</td>
+                    <td>asdsadsadsad</td>
+                    <td>12321321331</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" @click.prevent="deleteContact(contact.id)">Delete</button>
-                        <router-link :to="{name: 'get_contact', params: { id: contact.id }}" class="btn btn-primary btn-sm">Edit</router-link>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <router-link class="btn btn-primary btn-sm">Edit</router-link>
                     </td>
                 </tr>
             </tbody>
@@ -30,30 +30,32 @@
 </template>
 
 
+
+
 <script>
     export default {
         created() {
-            this.loadData();
+            // this.loadData();
         },
         methods: {
-            loadData() {
-                let url = this.url + '/api/getContacts';
-                this.axios.get(url).then(response => {
-                this.contacts = response.data
-                });
-            },
-            deleteContact(id) {
-                let url = this.url + `/api/deleteContact/${id}`;
-                this.axios.delete(url).then(response => {
-                      if(response.status){
-                        this.loadData();
-                        this.$utils.showSuccess('Success', response.message);
+            // loadData() {
+            //     let url = this.url + '/api/getContacts';
+            //     this.axios.get(url).then(response => {
+            //     this.contacts = response.data
+            //     });
+            // },
+            // deleteContact(id) {
+            //     let url = this.url + `/api/deleteContact/${id}`;
+            //     this.axios.delete(url).then(response => {
+            //           if(response.status){
+            //             this.loadData();
+            //             this.$utils.showSuccess('Success', response.message);
                  
-                    } else{
-                        this.$utils.showEror('Error', response.message);
-                    }
-                });
-            }
+            //         } else{
+            //             this.$utils.showEror('Error', response.message);
+            //         }
+            //     });
+            // }
         },
         mounted() {
             console.log('Contacts List Component mounted');

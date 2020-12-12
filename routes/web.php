@@ -30,5 +30,6 @@ Route::prefix('api')->group(function () {
 // npm install cross-env
 // npm install --save axios vue-axios
 // npm install --save vue-router
+// npm install vue-simple-spinner --save
 
 

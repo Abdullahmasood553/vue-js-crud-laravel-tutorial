@@ -7,6 +7,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      
       <li class="nav-item ">
         <router-link to="/" class="nav-link">Home</router-link>
       </li>
@@ -22,16 +23,16 @@
     </ul>
 
     <ul class = "navbar-nav ml-auto">
-              <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ app.user ? app.user.name : 'Account' }}
+          Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <div v-if="!app.user">
+            <div >
                 <router-link to="/login" class="dropdown-item">Login</router-link> 
                  <router-link to="/register" class="dropdown-item">Register</router-link> 
             </div>
-               <a v-else @click="logout" href="javascript:;" class="dropdown-item">Logout</a>
+               <a  href="javascript:;" class="dropdown-item">Logout</a>
         </div>
       </li>
     </ul>
@@ -46,10 +47,18 @@
         name: 'navbar',
         props: ['app'],
         data() {
-           
+            return {
+                url: document.head.querySelector('meta[name="url"]').content,
+            }
         }, 
         methods: {
-            
+            // logout() {
+            //     let url = this.url+'/auth/logout';
+            //     this.axios.post(url).then((response) => {
+            //       this.app.user = null;
+            //         this.$router.push("/login");
+            //       });
+            // }
         }
     }
 </script>
